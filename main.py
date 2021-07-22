@@ -12,21 +12,22 @@ print('Using {} device'.format(device))
 
 # Neuron network
 model = EEGNet().to(device)
+model = model.float()
 
 # Hyper parameter
 batch_size = 64
 learning_rate = 1e-2
 epochs = 300
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-loss_function = nn.CrossEntropyLoss
+loss_function = nn.CrossEntropyLoss()
 
 
 if __name__ == "__main__":
     trainDataset = EEGDataset("training")
     testDataset = EEGDataset("testing")
 
-    trainLoader = DataLoader(trainDataset)
-    testLoader = DataLoader(testDataset)
+    trainLoader = DataLoader(trainDataset, batch_size=batch_size, shuffle=True)
+    testLoader = DataLoader(testDataset, batch_size=batch_size, shuffle=True)
 
     for e in range(1, epochs + 1):
         print(f"Epoch [{e}] start:")

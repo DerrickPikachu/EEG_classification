@@ -35,6 +35,7 @@ class EEGNet(nn.Module):
                 stride=(1, 1),
                 padding=(0, 25),
                 bias=False,
+                dtype=torch.float,
             ),
             nn.BatchNorm2d(
                 num_features=16,
@@ -91,6 +92,7 @@ class EEGNet(nn.Module):
             nn.Dropout(p=0.25)
         )
 
+        self.flatten = nn.Flatten()
         self.classify = nn.Sequential(
             nn.Linear(
                 in_features=736,
@@ -103,7 +105,8 @@ class EEGNet(nn.Module):
         firstFeature = self.firstConv(x)
         depthFeature = self.depthwiseConv(firstFeature)
         finalFeature = self.separableConv(depthFeature)
-        prediction = self.classify(finalFeature)
+        flattenFeature = self.flatten(finalFeature)
+        prediction = self.classify(flattenFeature)
         return prediction
 
 

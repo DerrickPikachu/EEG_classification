@@ -1,4 +1,6 @@
 from torch.utils.data import Dataset
+from torchvision.transforms import Lambda
+
 from dataloader import read_bci_data
 from torch.utils.data import DataLoader
 
@@ -24,8 +26,20 @@ class EEGDataset(Dataset):
 
 
 if __name__ == "__main__":
-    trainDataset = EEGDataset("training")
-    testDataset = EEGDataset("testing")
+    # Be careful that you don't need to do the target transform, because Cross entropy in pytorch is only used to
+    # calculate the labelled one. Only use the initial value is ok.
+    trainDataset = EEGDataset(
+        "training",
+        target_transform=Lambda(
+            lambda y: torch.zeros(2, dtype=torch.float).scatter_(dim=0, index=torch.tensor(int(y)), value=1)
+        )
+    )
+    testDataset = EEGDataset(
+        "testing",
+        target_transform=Lambda(
+            lambda y: torch.zeros(2, dtype=torch.float).scatter_(dim=0, index=torch.tensor(int(y)), value=1)
+        )
+    )
     train_dataloader = DataLoader(trainDataset, batch_size=64, shuffle=True)
     test_dataloader = DataLoader(testDataset, batch_size=64, shuffle=True)
 
