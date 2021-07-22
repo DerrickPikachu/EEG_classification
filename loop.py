@@ -1,11 +1,14 @@
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
+from main import device
 
 
 def train_loop(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     for batch, (X, y) in enumerate(dataloader):
+        X = X.to(device)
+        y = y.to(device)
         # Forward pass, model predict
         pred = model(X.float())
         loss = loss_fn(pred, y.long())
@@ -27,6 +30,8 @@ def test_loop(dataloader, model, loss_fn):
 
     with torch.no_grad():
         for X, y in dataloader:
+            X = X.to(device)
+            y = y.to(device)
             # Forward pass, model predict
             pred = model(X.float())
             test_loss += loss_fn(pred, y.long()).item()
