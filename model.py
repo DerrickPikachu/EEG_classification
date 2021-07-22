@@ -4,9 +4,6 @@ from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-print('Using {} device'.format(device))
-
 
 class TestNetwork(nn.Module):
     def __init__(self):
@@ -38,7 +35,6 @@ class EEGNet(nn.Module):
                 stride=(1, 1),
                 padding=(0, 25),
                 bias=False,
-                device=device,
             ),
             nn.BatchNorm2d(
                 num_features=16,
