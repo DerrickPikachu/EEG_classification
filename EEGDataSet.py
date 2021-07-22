@@ -20,7 +20,7 @@ class EEGDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        return self.data[idx][0], self.label[idx]
+        return self.data[idx], self.label[idx]
 
 
 if __name__ == "__main__":
