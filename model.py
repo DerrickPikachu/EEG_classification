@@ -99,7 +99,7 @@ class EEGNet(nn.Module):
         self.flatten = nn.Flatten()
         self.classify = nn.Sequential(
             nn.Linear(
-                in_features=160,
+                in_features=352,
                 out_features=2,
                 bias=True,
             )
