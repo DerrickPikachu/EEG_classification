@@ -16,9 +16,9 @@ model = EEGNet().to(device)
 model = model.float()
 
 # Hyper parameter
-batch_size = 32
-learning_rate = 1e-3
-epochs = 400
+batch_size = 64
+learning_rate = 1e-2
+epochs = 300
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 loss_function = nn.CrossEntropyLoss()
 
