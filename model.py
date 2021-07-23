@@ -152,9 +152,10 @@ class DeepConvNet(nn.Module):
 
         self.flatten = nn.Flatten()
         self.dense = nn.Sequential(
-            nn.Linear(8600, 500),
-            nn.ReLU(),
-            nn.Linear(500, 2),
+            # nn.Linear(8600, 500),
+            # nn.ReLU(),
+            # nn.Linear(500, 2),
+            nn.Linear(8600, 2),
         )
 
     def forward(self, x):
