@@ -31,9 +31,9 @@ class EEGNet(nn.Module):
             nn.Conv2d(
                 in_channels=1,
                 out_channels=16,
-                kernel_size=(1, 51),
+                kernel_size=(1, 41),
                 stride=(1, 1),
-                padding=(0, 25),
+                padding=(0, 20),
                 bias=False,
                 dtype=torch.float,
             ),
