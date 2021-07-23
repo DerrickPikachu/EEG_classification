@@ -5,6 +5,7 @@ from main import device
 
 
 def train_loop(dataloader, model, loss_fn, optimizer):
+    model.train()
     size = len(dataloader.dataset)
     for batch, (X, y) in enumerate(dataloader):
         X = X.to(device)
