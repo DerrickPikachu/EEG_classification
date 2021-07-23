@@ -62,9 +62,9 @@ class EEGNet(nn.Module):
                affine=True,
                track_running_stats=True,
             ),
-            # nn.ELU(alpha=1.0),
+            nn.ELU(alpha=1.0),
             # nn.ReLU(),
-            nn.LeakyReLU(),
+            # nn.LeakyReLU(),
             nn.AvgPool2d(kernel_size=(1, 4), stride=(1, 4), padding=0),
             nn.Dropout(p=0.25)
         )
@@ -85,9 +85,9 @@ class EEGNet(nn.Module):
                 affine=True,
                 track_running_stats=True,
             ),
-            # nn.ELU(alpha=1.0),
+            nn.ELU(alpha=1.0),
             # nn.ReLU(),
-            nn.LeakyReLU(),
+            # nn.LeakyReLU(),
             nn.AvgPool2d(
                 kernel_size=(1, 8),
                 stride=(1, 8),
