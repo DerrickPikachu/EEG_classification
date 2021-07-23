@@ -50,8 +50,8 @@ class EEGNet(nn.Module):
             nn.Conv2d(
                 in_channels=16,
                 out_channels=32,
-                kernel_size=(2, 5),
-                stride=(1, 2),
+                kernel_size=(2, 1),
+                stride=(1, 1),
                 groups=16,
                 bias=False,
             ),
@@ -99,7 +99,7 @@ class EEGNet(nn.Module):
         self.flatten = nn.Flatten()
         self.classify = nn.Sequential(
             nn.Linear(
-                in_features=352,
+                in_features=736,
                 out_features=2,
                 bias=True,
             )
