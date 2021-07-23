@@ -19,7 +19,7 @@ model = model.float()
 batch_size = 64
 learning_rate = 1e-2
 epochs = 300
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.Adam(model.parameters())
 loss_function = nn.CrossEntropyLoss()
 
 
