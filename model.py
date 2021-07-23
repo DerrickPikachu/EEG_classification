@@ -31,7 +31,7 @@ class EEGNet(nn.Module):
             nn.Conv2d(
                 in_channels=1,
                 out_channels=16,
-                kernel_size=(1, 41),
+                kernel_size=(1, 51),
                 stride=(1, 1),
                 padding=(0, 20),
                 bias=False,
@@ -50,7 +50,7 @@ class EEGNet(nn.Module):
             nn.Conv2d(
                 in_channels=16,
                 out_channels=32,
-                kernel_size=(2, 5),
+                kernel_size=(2, 10),
                 stride=(1, 2),
                 groups=16,
                 bias=False,
