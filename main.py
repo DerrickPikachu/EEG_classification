@@ -34,7 +34,7 @@ if __name__ == "__main__":
         print(f"Epoch [{e}] start:")
         print("-------------------------------")
         train_loop(trainLoader, model, loss_function, optimizer)
-        test_loop(trainLoader, model, loss_function)
+        test_loop(testLoader, model, loss_function)
         print("-------------------------------\n")
 
     print("Finish")
