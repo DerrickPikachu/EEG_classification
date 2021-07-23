@@ -32,7 +32,7 @@ class EEGNet(nn.Module):
                 in_channels=1,
                 out_channels=16,
                 kernel_size=(1, 51),
-                stride=(1, 1),
+                stride=(1, 10),
                 padding=(0, 25),
                 bias=False,
                 dtype=torch.float,
@@ -51,7 +51,7 @@ class EEGNet(nn.Module):
                 in_channels=16,
                 out_channels=32,
                 kernel_size=(2, 5),
-                stride=(1, 3),
+                stride=(1, 1),
                 groups=16,
                 bias=False,
             ),
@@ -99,7 +99,7 @@ class EEGNet(nn.Module):
         self.flatten = nn.Flatten()
         self.classify = nn.Sequential(
             nn.Linear(
-                in_features=224,
+                in_features=64,
                 out_features=2,
                 bias=True,
             )
