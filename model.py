@@ -32,7 +32,7 @@ class EEGNet(nn.Module):
                 in_channels=1,
                 out_channels=16,
                 kernel_size=(1, 51),
-                stride=(1, 2),
+                stride=(1, 1),
                 padding=(0, 25),
                 bias=False,
                 dtype=torch.float,
@@ -66,7 +66,7 @@ class EEGNet(nn.Module):
             # nn.ReLU(),
             # nn.LeakyReLU(),
             nn.AvgPool2d(kernel_size=(1, 4), stride=(1, 4), padding=0),
-            nn.Dropout(p=0.25)
+            nn.Dropout(p=0.5)
         )
 
         self.separableConv = nn.Sequential(
@@ -93,7 +93,7 @@ class EEGNet(nn.Module):
                 stride=(1, 8),
                 padding=0,
             ),
-            nn.Dropout(p=0.25)
+            nn.Dropout(p=0.5)
         )
 
         self.flatten = nn.Flatten()
