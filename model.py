@@ -114,8 +114,63 @@ class EEGNet(nn.Module):
         return prediction
 
 
+class DeepConvNet(nn.Module):
+    def __init__(self):
+        super(DeepConvNet, self).__init__()
+        self.doubleConv = nn.Sequential(
+            nn.Conv2d(1, 25, kernel_size=(1, 5), padding="valid"),
+            nn.Conv2d(25, 25, kernel_size=(2, 1), padding="valid"),
+            nn.BatchNorm2d(25),
+            nn.ELU(),
+            nn.MaxPool2d(kernel_size=(1, 2)),
+            nn.Dropout(p=0.5),
+        )
+
+        self.secondConv = nn.Sequential(
+            nn.Conv2d(25, 50, kernel_size=(1, 5), padding="valid"),
+            nn.BatchNorm2d(50),
+            nn.ELU(),
+            nn.MaxPool2d(kernel_size=(1, 2)),
+            nn.Dropout(p=0.5),
+        )
+
+        self.thirdConv = nn.Sequential(
+            nn.Conv2d(50, 100, kernel_size=(1, 5), padding="valid"),
+            nn.BatchNorm2d(100),
+            nn.ELU(),
+            nn.MaxPool2d(kernel_size=(1, 2)),
+            nn.Dropout(p=0.5),
+        )
+
+        self.fourthConv = nn.Sequential(
+            nn.Conv2d(100, 200, kernel_size=(1, 5), padding="valid"),
+            nn.BatchNorm2d(200),
+            nn.ELU(),
+            nn.MaxPool2d(kernel_size=(1, 2)),
+            nn.Dropout(p=0.5),
+        )
+
+        self.flatten = nn.Flatten()
+        self.dense = nn.Sequential(
+            nn.Linear(8600, 500),
+            nn.ReLU(),
+            nn.Linear(500, 2),
+        )
+
+    def forward(self, x):
+        firstFeature = self.doubleConv(x)
+        feature = self.secondConv(firstFeature)
+        feature = self.thirdConv(feature)
+        feature = self.fourthConv(feature)
+        flatten = self.flatten(feature)
+        pred = self.dense(flatten)
+        return pred
+
+
 if __name__ == "__main__":
     net = EEGNet()
+    print(net)
+    net = DeepConvNet()
     print(net)
     # model = TestNetwork().to(device)
     # print(model)
