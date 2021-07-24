@@ -119,7 +119,7 @@ class DeepConvNet(nn.Module):
         super(DeepConvNet, self).__init__()
         self.doubleConv = nn.Sequential(
             nn.Conv2d(1, 25, kernel_size=(1, 5), padding="valid"),
-            nn.Conv2d(25, 25, kernel_size=(2, 1), padding="valid"),
+            nn.Conv2d(25, 25, kernel_size=(2, 5), padding="valid"),
             nn.BatchNorm2d(25),
             nn.ELU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
