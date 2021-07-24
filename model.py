@@ -181,11 +181,3 @@ class DeepConvNet(nn.Module):
 if __name__ == "__main__":
     net = EEGNet()
     print(net)
-    net = DeepConvNet()
-    print(net)
-    # model = TestNetwork().to(device)
-    # print(model)
-    #
-    # X = torch.rand(1, 2, device=device)
-    # pred = model(X)
-    # print(f"model predict: {pred}")
