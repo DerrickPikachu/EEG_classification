@@ -119,11 +119,12 @@ class DeepConvNet(nn.Module):
         super(DeepConvNet, self).__init__()
         self.doubleConv = nn.Sequential(
             nn.Conv2d(1, 25, kernel_size=(1, 10), padding="valid"),
+            nn.BatchNorm2d(25),
             nn.Conv2d(25, 25, kernel_size=(2, 5), padding="valid"),
             nn.BatchNorm2d(25),
             # nn.ELU(),
-            # nn.LeakyReLU(),
-            nn.ReLU(),
+            nn.LeakyReLU(),
+            # nn.ReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
@@ -132,8 +133,8 @@ class DeepConvNet(nn.Module):
             nn.Conv2d(25, 50, kernel_size=(1, 5), padding="valid"),
             nn.BatchNorm2d(50),
             # nn.ELU(),
-            # nn.LeakyReLU(),
-            nn.ReLU(),
+            nn.LeakyReLU(),
+            # nn.ReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
@@ -142,8 +143,8 @@ class DeepConvNet(nn.Module):
             nn.Conv2d(50, 100, kernel_size=(1, 5), stride=(1, 2), padding="valid"),
             nn.BatchNorm2d(100),
             # nn.ELU(),
-            # nn.LeakyReLU(),
-            nn.ReLU(),
+            nn.LeakyReLU(),
+            # nn.ReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
