@@ -24,8 +24,14 @@ class TestNetwork(nn.Module):
 
 
 class EEGNet(nn.Module):
-    def __init__(self):
+    def __init__(self, activation):
         super(EEGNet, self).__init__()
+
+        self.activationDict = {
+            'ReLU': nn.ReLU(),
+            'LeakyReLU': nn.LeakyReLU(),
+            'ELU': nn.ELU(),
+        }
 
         self.firstConv = nn.Sequential(
             nn.Conv2d(
@@ -62,9 +68,7 @@ class EEGNet(nn.Module):
                affine=True,
                track_running_stats=True,
             ),
-            # nn.ELU(alpha=1.0),
-            nn.ReLU(),
-            # nn.LeakyReLU(),
+            self.activationDict[activation],
             nn.AvgPool2d(kernel_size=(1, 4), stride=(1, 4), padding=0),
             nn.Dropout(p=0.5)
         )
@@ -85,9 +89,7 @@ class EEGNet(nn.Module):
                 affine=True,
                 track_running_stats=True,
             ),
-            # nn.ELU(alpha=1.0),
-            nn.ReLU(),
-            # nn.LeakyReLU(),
+            self.activationDict[activation],
             nn.AvgPool2d(
                 kernel_size=(1, 8),
                 stride=(1, 8),

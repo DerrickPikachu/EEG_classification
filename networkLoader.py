@@ -20,7 +20,7 @@ def load_network(model, filename):
 
 
 if __name__ == "__main__":
-    net = EEGNet()
+    net = EEGNet('ReLU')
     testData = EEGDataset("testing")
     testLoader = DataLoader(testData, batch_size=64)
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     save_network(net, "test")
 
-    net2 = EEGNet()
+    net2 = EEGNet('ReLU')
     net2 = load_network(net2, "test")
 
     net2.eval()
