@@ -130,7 +130,7 @@ class DeepConvNet(nn.Module):
         )
 
         self.secondConv = nn.Sequential(
-            nn.Conv2d(25, 50, kernel_size=(1, 5), padding="valid"),
+            nn.Conv2d(25, 50, kernel_size=(1, 10), padding="valid"),
             nn.BatchNorm2d(50),
             # nn.ELU(),
             nn.LeakyReLU(),
@@ -140,7 +140,7 @@ class DeepConvNet(nn.Module):
         )
 
         self.thirdConv = nn.Sequential(
-            nn.Conv2d(50, 100, kernel_size=(1, 5), stride=(1, 2), padding="valid"),
+            nn.Conv2d(50, 100, kernel_size=(1, 10), stride=(1, 2), padding="valid"),
             nn.BatchNorm2d(100),
             # nn.ELU(),
             nn.LeakyReLU(),
@@ -164,7 +164,7 @@ class DeepConvNet(nn.Module):
             # nn.Linear(8600, 500),
             # nn.ReLU(),
             # nn.Linear(500, 2),
-            nn.Linear(3400, 2),
+            nn.Linear(3200, 2),
             nn.Dropout(p=0.25)
         )
 
