@@ -118,8 +118,8 @@ class DeepConvNet(nn.Module):
     def __init__(self):
         super(DeepConvNet, self).__init__()
         self.doubleConv = nn.Sequential(
-            nn.Conv2d(1, 25, kernel_size=(1, 5), padding="valid"),
-            nn.Conv2d(25, 25, kernel_size=(2, 1), padding="valid"),
+            nn.Conv2d(1, 25, kernel_size=(1, 10), padding="valid"),
+            nn.Conv2d(25, 25, kernel_size=(2, 5), padding="valid"),
             nn.BatchNorm2d(25),
             nn.ELU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
@@ -135,7 +135,7 @@ class DeepConvNet(nn.Module):
         )
 
         self.thirdConv = nn.Sequential(
-            nn.Conv2d(50, 100, kernel_size=(1, 5), padding="valid"),
+            nn.Conv2d(50, 100, kernel_size=(1, 5), stride=(1, 2), padding="valid"),
             nn.BatchNorm2d(100),
             nn.ELU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
@@ -155,7 +155,7 @@ class DeepConvNet(nn.Module):
             # nn.Linear(8600, 500),
             # nn.ReLU(),
             # nn.Linear(500, 2),
-            nn.Linear(8600, 2),
+            nn.Linear(4000, 2),
             nn.Dropout(p=0.25)
         )
 
