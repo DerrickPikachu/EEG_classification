@@ -121,7 +121,8 @@ class DeepConvNet(nn.Module):
             nn.Conv2d(1, 25, kernel_size=(1, 10), padding="valid"),
             nn.Conv2d(25, 25, kernel_size=(2, 5), padding="valid"),
             nn.BatchNorm2d(25),
-            nn.ELU(),
+            # nn.ELU(),
+            nn.LeakyReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
@@ -129,7 +130,8 @@ class DeepConvNet(nn.Module):
         self.secondConv = nn.Sequential(
             nn.Conv2d(25, 50, kernel_size=(1, 5), padding="valid"),
             nn.BatchNorm2d(50),
-            nn.ELU(),
+            # nn.ELU(),
+            nn.LeakyReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
@@ -137,7 +139,8 @@ class DeepConvNet(nn.Module):
         self.thirdConv = nn.Sequential(
             nn.Conv2d(50, 100, kernel_size=(1, 5), stride=(1, 2), padding="valid"),
             nn.BatchNorm2d(100),
-            nn.ELU(),
+            # nn.ELU(),
+            nn.LeakyReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
@@ -145,7 +148,8 @@ class DeepConvNet(nn.Module):
         self.fourthConv = nn.Sequential(
             nn.Conv2d(100, 200, kernel_size=(1, 5), padding="valid"),
             nn.BatchNorm2d(200),
-            nn.ELU(),
+            # nn.ELU(),
+            nn.LeakyReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
