@@ -153,8 +153,8 @@ class DeepConvNet(nn.Module):
             nn.Conv2d(100, 200, kernel_size=(1, 5), padding="valid"),
             nn.BatchNorm2d(200),
             # nn.ELU(),
-            # nn.LeakyReLU(),
-            nn.ReLU(),
+            nn.LeakyReLU(),
+            # nn.ReLU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
             nn.Dropout(p=0.5),
         )
