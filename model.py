@@ -143,7 +143,7 @@ class DeepConvNet(nn.Module):
         )
 
         self.fourthConv = nn.Sequential(
-            nn.Conv2d(100, 200, kernel_size=(1, 5), stride=(1, 3), padding="valid"),
+            nn.Conv2d(100, 200, kernel_size=(1, 5), padding="valid"),
             nn.BatchNorm2d(200),
             nn.ELU(),
             nn.MaxPool2d(kernel_size=(1, 2)),
@@ -155,7 +155,8 @@ class DeepConvNet(nn.Module):
             # nn.Linear(8600, 500),
             # nn.ReLU(),
             # nn.Linear(500, 2),
-            nn.Linear(2800, 2),
+            nn.Linear(8400, 2),
+            nn.Dropout(p=0.25)
         )
 
     def forward(self, x):
