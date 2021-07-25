@@ -12,7 +12,7 @@ print('Using {} device'.format(device))
 
 
 # Neuron network
-model = EEGNet().to(device)
+model = EEGNet("ReLU").to(device)
 # model = DeepConvNet().to(device)
 model = model.float()
 
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     print("Do you want to save the network?")
     print("1. yes")
     print("2. no")
-    choice = input()
+    choice = int(input())
 
     if choice == 1:
         filename = input("Please input the filename")
