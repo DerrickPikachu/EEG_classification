@@ -1,7 +1,10 @@
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
-from main import device
+
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+# print('Using {} device'.format(device))
 
 
 def train_loop(dataloader, model, loss_fn, optimizer):
