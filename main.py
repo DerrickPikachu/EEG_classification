@@ -4,11 +4,8 @@ from torch.utils.data import DataLoader
 from torch import nn
 from loop import *
 from networkLoader import save_network
+from deviceCheck import device
 import torch
-
-# Select computing device
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-print('Using {} device'.format(device))
 
 
 # Neuron network
