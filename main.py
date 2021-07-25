@@ -1,15 +1,15 @@
 from model import *
-from loop import *
 from EEGDataSet import EEGDataset
 from torch.utils.data import DataLoader
 from torch import nn
+from loop import *
 from networkLoader import save_network
-
 import torch
 
 # Select computing device
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print('Using {} device'.format(device))
+
 
 # Neuron network
 # model = EEGNet().to(device)
