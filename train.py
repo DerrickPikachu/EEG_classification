@@ -39,8 +39,8 @@ if __name__ == "__main__":
         *accuracy, = epoch_loop(epochs, trainLoader, testLoader, model, loss_function, optimizer)
         print('finish\n')
 
-        plt.plot(epochList, accuracy[0], label=activation + '_train')
-        plt.plot(epochList, accuracy[1], label=activation + '_test')
+        plt.plot(epochList, accuracy[0], label=activation + '_train', linewidth=4)
+        plt.plot(epochList, accuracy[1], label=activation + '_test', linewidth=4)
 
     plt.legend()
     plt.title(f'Activation Function Comparison({network})')
