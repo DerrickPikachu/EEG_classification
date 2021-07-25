@@ -25,13 +25,13 @@ if __name__ == "__main__":
     trainLoader = DataLoader(trainDataset, batch_size=batch_size, shuffle=True)
     testLoader = DataLoader(testDataset, batch_size=batch_size, shuffle=True)
 
-    for e in range(1, epochs + 1):
-        print(f"Epoch [{e}] start:")
-        print("-------------------------------")
-        train_loop(trainLoader, model, loss_function, optimizer)
-        test_loop(testLoader, model, loss_function)
-        print("-------------------------------\n")
-
+    # for e in range(1, epochs + 1):
+    #     print(f"Epoch [{e}] start:")
+    #     print("-------------------------------")
+    #     train_loop(trainLoader, model, loss_function, optimizer)
+    #     test_loop(testLoader, model, loss_function)
+    #     print("-------------------------------\n")
+    epoch_loop(epochs, trainLoader, testLoader, model, loss_function, optimizer)
     print("Finish")
 
     print("Do you want to save the network?")

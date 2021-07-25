@@ -43,3 +43,12 @@ def test_loop(dataloader, model, loss_fn):
     test_loss /= num_batches
     corrects /= size
     print(f"Test Error: \n Accuracy: {(100*corrects):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+
+
+def epoch_loop(epochs, train_loader, test_loader, model, loss_function, optimizer):
+    for e in range(1, epochs + 1):
+        print(f"Epoch [{e}] start:")
+        print("-------------------------------")
+        train_loop(train_loader, model, loss_function, optimizer)
+        test_loop(test_loader, model, loss_function)
+        print("-------------------------------\n")
