@@ -12,8 +12,8 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print('Using {} device'.format(device))
 
 # Neuron network
-# model = EEGNet().to(device)
-model = DeepConvNet().to(device)
+model = EEGNet().to(device)
+# model = DeepConvNet().to(device)
 model = model.float()
 
 # Hyper parameter
