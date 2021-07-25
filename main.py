@@ -3,6 +3,7 @@ from loop import *
 from EEGDataSet import EEGDataset
 from torch.utils.data import DataLoader
 from torch import nn
+from networkLoader import save_network
 
 import torch
 
@@ -38,3 +39,12 @@ if __name__ == "__main__":
         print("-------------------------------\n")
 
     print("Finish")
+
+    print("Do you want to save the network?")
+    print("1. yes")
+    print("2. no")
+    choice = input()
+
+    if choice == 1:
+        filename = input("Please input the filename")
+        save_network(model, filename)
