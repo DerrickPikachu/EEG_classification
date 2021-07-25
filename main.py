@@ -7,11 +7,8 @@ from networkLoader import save_network
 from deviceCheck import device
 import torch
 
-
-# Neuron network
-model = EEGNet("ReLU").to(device)
-# model = DeepConvNet().to(device)
-model = model.float()
+# Build CNN
+model = chooseModel(device)
 
 # Hyper parameter
 batch_size = 64

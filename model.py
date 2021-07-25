@@ -179,6 +179,34 @@ class DeepConvNet(nn.Module):
         return pred
 
 
+def chooseModel(device):
+    print("Choose the model you want to train:")
+    print("1. EEGNet")
+    print("2. DeepConvNet")
+    netStruct = int(input())
+
+    print("Choose the activation function:")
+    print("1. ReLU")
+    print("2. LeakyReLU")
+    print("3. ELU")
+    activationChoice = int(input())
+
+    if activationChoice == 1:
+        activation = "ReLU"
+    elif activationChoice == 2:
+        activation = "LeakyReLU"
+    else:
+        activation = "ELU"
+
+    # Build CNN
+    if netStruct == 1:
+        model = EEGNet(activation).to(device)
+    else:
+        model = DeepConvNet(activation).to(device)
+
+    return model
+
+
 if __name__ == "__main__":
     net = EEGNet()
     print(net)
