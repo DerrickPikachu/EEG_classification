@@ -56,15 +56,14 @@ def test_loop(dataloader, model, loss_fn):
 
 
 def epoch_loop(epochs, train_loader, test_loader, model, loss_function, optimizer):
-    trainAcs = [0] * (epochs + 1)
-    testAcs = [0] * (epochs + 1)
+    trainAcs = [0] * epochs
+    testAcs = [0] * epochs
 
     for e in range(1, epochs + 1):
         print(f"Epoch [{e}] start:")
         print("-------------------------------")
-        trainAcs[e] = train_loop(train_loader, model, loss_function, optimizer)
-        testAcs[e] = test_loop(test_loader, model, loss_function)
+        trainAcs[e-1] = train_loop(train_loader, model, loss_function, optimizer)
+        testAcs[e-1] = test_loop(test_loader, model, loss_function)
         print("-------------------------------\n")
 
-    print(trainAcs)
-    print(testAcs)
+    return trainAcs, testAcs
