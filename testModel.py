@@ -8,13 +8,13 @@ if __name__ == "__main__":
     print("Choose network structure:")
     print("1. EEGNet")
     print("2. DeepConvNet")
-    netStructure = input()
+    netStructure = int(input())
 
     print("Choose the activation function:")
     print("1. ReLU")
     print("2. LeakyReLU")
     print("3. ELU")
-    activationChoice = input()
+    activationChoice = int(input())
 
     if activationChoice == 1:
         activation = "ReLU"
