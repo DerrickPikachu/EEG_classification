@@ -300,7 +300,7 @@ class DeepConvNetOrigin(nn.Module):
         )
 
         self.thirdConv = nn.Sequential(
-            nn.Conv2d(50, 100, kernel_size=(1, 5), stride=(1, 2), padding="valid"),
+            nn.Conv2d(50, 100, kernel_size=(1, 5), padding="valid"),
             nn.BatchNorm2d(100),
             self.activationDict[activation],
             nn.MaxPool2d(kernel_size=(1, 2)),
