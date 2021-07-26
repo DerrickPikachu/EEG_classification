@@ -33,7 +33,7 @@ if __name__ == "__main__":
         if network == "EEGNet":
             model = EEGNet(activation).to(device)
         else:
-            model = DeepConvNet(activation).to(device)
+            model = DeepConvNetOrigin(activation).to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
         *accuracy, = epoch_loop(epochs, trainLoader, testLoader, model, loss_function, optimizer)
