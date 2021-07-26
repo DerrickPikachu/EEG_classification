@@ -29,3 +29,5 @@ LAB2 in NYCU DLP. Use CNN to classify the EEG data.
 ## Environment
 - OS: Ubuntu 18.04
 - python: 3.6.9
+
+github: https://github.com/DerrickPikachu/EEG_classification
