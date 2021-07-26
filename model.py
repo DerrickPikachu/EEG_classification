@@ -355,9 +355,9 @@ def chooseModel(device):
     # Build CNN
     if netStruct == 1:
         # model = EEGNet(activation).to(device)
-        model = EEGNetOrigin(activation).to(device)
+        model = EEGNet(activation).to(device)
     else:
-        model = DeepConvNetOrigin(activation).to(device)
+        model = DeepConvNet(activation).to(device)
 
     return model
 
