@@ -17,7 +17,7 @@ if __name__ == "__main__":
     accuracyDict = {}
 
     # Hyper parameter
-    batch_size = 16
+    batch_size = 64
     learning_rate = 1e-3
     epochs = 400
     loss_function = nn.CrossEntropyLoss()
@@ -31,9 +31,9 @@ if __name__ == "__main__":
     for activation in activationList:
         print(f"{network} with {activation} training start")
         if network == "EEGNet":
-            model = EEGNetOrigin(activation).to(device)
+            model = EEGNet(activation).to(device)
         else:
-            model = DeepConvNetOrigin(activation).to(device)
+            model = DeepConvNet(activation).to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
         *accuracy, = epoch_loop(epochs, trainLoader, testLoader, model, loss_function, optimizer)
